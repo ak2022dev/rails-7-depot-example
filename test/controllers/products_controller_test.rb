@@ -11,6 +11,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'nav a', minimum: 4
     assert_select 'main ul li', 9
+    assert_select 'h1', 'Programming Ruby 1.9'
+
   end
 
   test "should get new" do
