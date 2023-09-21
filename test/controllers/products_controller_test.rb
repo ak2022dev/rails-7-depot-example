@@ -10,6 +10,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get products_url
     assert_response :success
     assert_select 'nav a', minimum: 4
+    assert_select 'main ul li', 9
   end
 
   test "should get new" do
