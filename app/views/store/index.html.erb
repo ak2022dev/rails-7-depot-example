@@ -7,7 +7,10 @@
   <% end %>
 
   <h1 class="font-bold text-xl mb-6 pb-2 border-b-2">
-    Your Pragmatic Catalog accessed <%= session[:counter] %> <%= "time".pluralize(session[:counter]) %>
+    Your Pragmatic Catalog
+    <% if session[:counter] > 5 %> 
+      accessed <%= session[:counter] %> <%= "time".pluralize(session[:counter]) %>
+    <% end %>
   </h1>
 
   <ul>
