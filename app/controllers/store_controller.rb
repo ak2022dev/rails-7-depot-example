@@ -1,7 +1,10 @@
 class StoreController < ApplicationController
   def index
-    @store_index_access_count ||= 0
-    @store_index_access_count += 1
+    if session[:counter].nil?
+      session[:counter] = 1
+    else
+      session[:counter] += 1
+    end
     @products = Product.order(:title)
   end
 end
