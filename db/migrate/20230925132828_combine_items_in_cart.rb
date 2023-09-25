@@ -21,7 +21,7 @@ class CombineItemsInCart < ActiveRecord::Migration[7.0]
     end 
   end
 
-  def down
+=begin   def down
     # split items with quantity>1 into multiple items
     LineItem.where("quantity>1").each do |line_item|
       # add individual items
@@ -37,5 +37,6 @@ class CombineItemsInCart < ActiveRecord::Migration[7.0]
       line_item.destroy
     end
   end
-
+ =end
+ 
 end
