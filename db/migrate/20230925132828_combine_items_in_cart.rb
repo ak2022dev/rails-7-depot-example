@@ -10,7 +10,7 @@ class CombineItemsInCart < ActiveRecord::Migration[7.0]
       sums.each do |product_id, quantity|
         if quantity > 1
           # remove individual items
-          cart.line_items.where(product.id: product_id).delete_all
+          cart.line_items.where(product_id: product_id).delete_all
 
           # replace with a single item
           item = cart.line_items.build(product_id: product_id)
@@ -21,7 +21,9 @@ class CombineItemsInCart < ActiveRecord::Migration[7.0]
     end 
   end
 
-=begin   def down
+=begin   
+
+  def down
     # split items with quantity>1 into multiple items
     LineItem.where("quantity>1").each do |line_item|
       # add individual items
@@ -37,6 +39,7 @@ class CombineItemsInCart < ActiveRecord::Migration[7.0]
       line_item.destroy
     end
   end
- =end
- 
+
+=end
+
 end
