@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a second experiment in using Ruby on Rails, based on the depot example
+in "Agile Web Development with Rails 7" by Ruby and Thomas, The Pragmatic Bookshelf, 2023.
 
-Things you may want to cover:
+The tags in the commits show where the tutorial ends and my own experiments were added
+in branches, based on the "Playtime" sections of the chapters from the book.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
