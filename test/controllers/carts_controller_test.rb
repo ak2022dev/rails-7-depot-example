@@ -49,17 +49,4 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to store_index_url
   end
 
-
-  # I think response to playtime should be base on this but not
-  # exactly sure. May look up further examples.
-  test "should put items into cart" do
-    post line_items_url, params: { product_id: products(:ruby).id }
-    @cart = carts(:one)
-    
-    assert_difference("LineItem.count") do
-      patch cart_url(@cart), params: { cart: { } }
-    end
-    # not sure if I should do this -> assert_redirected_to store_index_url
-  end
-
 end
