@@ -9,6 +9,11 @@ class CartsController < ApplicationController
 
   # GET /carts/1 or /carts/1.json
   def show
+    puts "******* In CartsController#show *******"
+    puts "This session's cart_id is #{session[:cart_id]}"
+    if @cart.id != session[:cart_id]
+      invalid_cart
+    end
   end
 
   # GET /carts/new
