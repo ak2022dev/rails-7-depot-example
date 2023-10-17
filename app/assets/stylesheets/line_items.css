@@ -7,9 +7,9 @@
   100% {
     background: none;
   }
+}
 
-  .line-item-highlight {
-    animation: line-item-highlight 1s;
-  }
 
+.line-item-highlight {
+  animation: line-item-highlight 1s;
 }
