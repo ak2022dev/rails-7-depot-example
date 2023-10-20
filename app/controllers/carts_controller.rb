@@ -54,9 +54,17 @@ class CartsController < ApplicationController
     session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to store_index_url, 
+      if @cart.destroy
+        format.turbo_stream { @current_item = @cart }
+        format.html { redirect_to store_index_url }
+        format.json { render :show, 
+                      status: :destroyed,
+                      location: @cart }
+      else
+        format.html { redirect_to store_index_url, 
         notice: 'Your cart is currently empty' }
-      format.json { head :no_content }
+        format.json { head :no_content }
+      end
     end
   end
 
