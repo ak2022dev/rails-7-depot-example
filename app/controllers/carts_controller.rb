@@ -50,16 +50,22 @@ class CartsController < ApplicationController
 
   # DELETE /carts/1 or /carts/1.json
   def destroy
-    @cart.destroy if @cart.id == session[:cart_id]
-    session[:cart_id] = nil
+#    @cart.destroy if @cart.id == session[:cart_id]
+#    session[:cart_id] = nil
 
     respond_to do |format|
-      if @cart.destroy
-        format.turbo_stream { @current_item = @cart }
-        format.html { redirect_to store_index_url }
-        format.json { render :show, 
-                      status: :destroyed,
-                      location: @cart }
+      if @cart.id == session[:cart_id]
+        destroyed = @cart.destroy
+        session[:cart_id] = nil
+        if destroyed
+          puts "In carts_controller#destroy, about to call format.turbo_stream"
+          format.turbo_stream { @current_item = @cart }
+          puts "In carts_controller#destroy, after calling format.turbo_stream"
+          format.html { redirect_to store_index_url }
+          format.json { render :show, 
+                        status: :destroyed,
+                        location: @cart }
+        end
       else
         format.html { redirect_to store_index_url, 
         notice: 'Your cart is currently empty' }
